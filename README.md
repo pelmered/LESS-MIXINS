@@ -58,6 +58,7 @@ Included features and mixins:
  * VERTICAL STATES SPRITE
  * HORIZONTAL STATES SPRITE
  * INLINE LIST
+ * USER-SELECT
  
  * A LOT MORE WILL BE ADDED CONTINUOUSLY. So check back regularly.
 

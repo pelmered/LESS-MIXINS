@@ -34,8 +34,8 @@
  * VERTICAL STATES SPRITE
  * HORIZONTAL STATES SPRITE
  * INLINE LIST
- * 
- * 
+ * UNSELECTABLE
+ * USER-SELECT
  * 
  */
  
@@ -567,4 +567,25 @@
 	
 	li { .iblock }
 	
+}
+
+
+/**
+ * USER-SELECT
+ * 
+ * Disables selection
+ */
+.user-select ( @val: none ) {
+   -webkit-touch-callout: @val;
+   -webkit-user-select: @val;
+   -moz-user-select: @val;
+   -moz-user-select: ~"-moz-@{val}";
+   -khtml-user-select: @val;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: @val;
+   user-select: @val;
 }
