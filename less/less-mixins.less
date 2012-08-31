@@ -52,7 +52,7 @@
  * TODO:
  * 
  * More default values(and use them more)
- * Add a lot more mixins
+ * Add more mixins
  * Sort mixins in a logical order. Alphabetical or categorized/gouped(and separated into multiple files?)? - Give me feedback on this one
  * Better demopage and documentation
  * 
@@ -103,6 +103,7 @@
   word-wrap: break-word;
 }
 
+
 /**
  * CSS image replacement
  * (from TwitterBootstrap)
@@ -116,39 +117,42 @@
 }
 
 
-
-
-
-
-
-
-
-
-
 /**
  * TEXT ALIGN SHORTCUTS
  * these rules are simple quick shortcuts to the "text-align" CSS property
  */
-.ta( @align:left ) { text-align: @align }
-.tl { .ta( left ) }
-.tr { .ta( right ) }
-.tc { .ta( center ) }
-.tj { .ta( justify ) }
-
-
-
-
-
+.ta( @align:left ) { 
+   text-align: @align;
+}
+.tl { 
+   .ta( left ) }
+.tr { 
+   .ta( right ) 
+}
+.tc { 
+   .ta( center ) 
+}
+.tj { 
+   .ta( justify ) 
+}
 
 
 /**
  * MARGIN SHORTCUTS
  * these are shortcuts to the margin-{side} CSS property
  */
-.mt ( @value:0 ) { margin-top: 		@value }
-.mr ( @value:0 ) { margin-right: 	@value }
-.mb ( @value:0 ) { margin-bottom: 	@value }
-.ml ( @value:0 ) { margin-left: 	@value }
+.mt ( @value:0 ) { 
+   margin-top: @value * 1px;
+}
+.mr ( @value:0 ) { 
+   margin-right: @value * 1px;
+}
+.mb ( @value:0 ) { 
+   margin-bottom: @value * 1px;
+}
+.ml ( @value:0 ) { 
+   margin-left: @value * 1px;
+}
 
 /**
  * MARGIN - H / V
@@ -163,18 +167,22 @@
 .mh( @v1, @v2 ) { 			.ml(@v1); 		.mr(@v2); }
 
 
-
-
-
-
 /**
  * PADDING SHORTCUTS
  * these are shortcuts to the padding-{side} CSS property
  */
-.pt ( @value:0 ) { padding-top: 	@value }
-.pr ( @value:0 ) { padding-right: 	@value }
-.pb ( @value:0 ) { padding-bottom: 	@value }
-.pl ( @value:0 ) { padding-left: 	@value }
+.pt ( @value:0 ) { 
+   padding-top: @value * 1px; 
+}
+.pr ( @value:0 ) { 
+   padding-right: @value * 1px;
+}
+.pb ( @value:0 ) { 
+   padding-bottom: @value * 1px;
+}
+.pl ( @value:0 ) { 
+   padding-left: @value * 1px;
+}
 
 /**
  * PADDING - H / V
@@ -182,17 +190,22 @@
  * you can use these mixins with one value applied to the left/right, top/bottom paddings or
  * you can use them with separated values
  */
-.pv( @value:0 ) { 			.pt(@value); 	.pb(@value); }
-.pv( @v1, @v2 ) { 			.pt(@v1); 		.pb(@v2); }
-
-.ph( @value:0 ) { 			.pl(@value); 	.pr(@value); }
-.ph( @v1, @v2 ) { 			.pl(@v1); 		.pr(@v2); }
-
-
-
-
-
-
+.pv( @value:0 ) { 			
+   .pt(@value); 	
+   .pb(@value); 
+}
+.pv( @v1, @v2 ) { 			
+   .pt(@v1); 		
+   .pb(@v2); 
+}
+.ph( @value:0 ) { 			
+   .pl(@value); 	
+   .pr(@value); 
+}
+.ph( @v1, @v2 ) { 			
+   .pl(@v1); 		
+   .pr(@v2); 
+}
 
 /**
  * SIZING, BOXING and MASKING
@@ -200,189 +213,314 @@
 
 /* size is inpired by the TwitterBootstrap mixin for arguments order. */
 /* this is a compatibility decision but I don't uderstand why to start with height!!! Why Twitter? Why? */
-.size( @h ) { 				height: @h }
-.size( null, @w ) { 		width: @w }
-.size( @h, @w ) { 			width: @w; height: @h }
+.size( @h ) { 				
+   height: @h * 1px 
+}
+.size( null, @w ) {
+   width: @w * 1px 
+}
+.size( @h, @w ) {
+   width: @w * 1px; height: @h * 1px 
+}
 
-.block {					display:block }
-.block( @w ) {				.block; .size(null,@w) }
-.block( null, @h ) {		.block; .size(@h) }
-.block( @w, @h ) {			.block; .size(@h,@w) }
+.block {					
+   display:block 
+}
+.block( @w ) {				
+   .block; .size(null,@w) 
+}
+.block( null, @h ) {		
+   .block; .size(@h) 
+}
+.block( @w, @h ) {			
+   .block; .size(@h,@w) 
+}
 
 /* inline-block backwards compatibilty hack */
 .inline-block {
-	display:				-moz-inline-stack;
-	display:				inline-block;
-	zoom:					1;
-	*display:				inline;
+	display: -moz-inline-stack;
+	display: inline-block;
+	zoom: 1;
+	*display: inline;
 }
 
-.inline-block( @w ) {		.inline-block; .size(null,@w) }
-.inline-block( null, @h ) {	.inline-block; .size(@h) }
-.inline-block( @w, @h ) {	.inline-block; .size(@h,@w) }
+.inline-block( @w ) {		
+   .inline-block; 
+   .size(null,@w);
+}
+.inline-block( null, @h ) {	
+   .inline-block; 
+   .size(@h);
+}
+.inline-block( @w, @h ) {	
+   .inline-block; 
+   .size(@h,@w);
+}
 
 /* inline-block shortcuts */
-.iblock {					.inline-block }
-.iblock( @w ) {				.inline-block(@w) }
-.iblock( null, @h ) {		.inline-block(null,@h) }
-.iblock( @w, @h ) {			.inline-block(@w,@h) }
-
-
-
-
-
+.iblock {					
+   .inline-block;
+}
+.iblock( @w ) {				
+   .inline-block(@w);
+}
+.iblock( null, @h ) {		
+   .inline-block(null,@h); 
+}
+.iblock( @w, @h ) {			
+   .inline-block(@w,@h);
+}
 
 
 /**
  * MASKING
  */
+.mask {						
+   .block;					
+   overflow: hidden;
+}
+.mask( @w ) {				
+   .block(@w); 			
+   .mask;
+}
+.mask( null, @h ) {			
+   .block(null,@h); 		
+   .mask;
+}
+.mask( @w, @h ) {			
+   .block(@w,@h); 			
+   .mask;
+}
 
-.mask {						.block;					overflow: hidden }
-.mask( @w ) {				.block(@w); 			.mask }
-.mask( null, @h ) {			.block(null,@h); 		.mask }
-.mask( @w, @h ) {			.block(@w,@h); 			.mask }
+.inline-mask {				
+   .inline-block;			
+   overflow: hidden;
+}
+.inline-mask( @w ) {		
+   .inline-block(@w);		
+   .inline-mask;
+}
+.inline-mask( null, @h ) {	
+   .inline-block(null,@h);	
+   .inline-mask;
+}
+.inline-mask( @w, @h ) {	
+   .inline-block(@w,@h); 	
+   .inline-mask;
+}
 
-.inline-mask {				.inline-block;			overflow: hidden }
-.inline-mask( @w ) {		.inline-block(@w);		.inline-mask }
-.inline-mask( null, @h ) {	.inline-block(null,@h);	.inline-mask }
-.inline-mask( @w, @h ) {	.inline-block(@w,@h); 	.inline-mask }
-
-.imask {					.inline-mask }
-.imask( @w ) {				.inline-mask(@w) }
-.imask( null, @h ) {		.inline-mask(null,@h) }
-.imask( @w, @h ) {			.inline-mask(@w,@h) }
-
-
-
-
-
+.imask {					
+   .inline-mask;
+}
+.imask( @w ) {				
+   .inline-mask(@w);
+}
+.imask( null, @h ) {		
+   .inline-mask(null,@h); 
+}
+.imask( @w, @h ) {			
+   .inline-mask(@w,@h);
+}
 
 
 /**
  * POSITIONING
  */
+.rel {						
+   position: relative;
+}
 
-.rel {						position: relative }
+.abs {						
+   position:absolute; 	
+   top:0; 		
+   left:0; 		
+}
+.abs( @v ) {				
+   .abs; 				
+   top: @v; 					
+}
+.abs( null, @h ) {			
+   .abs; 				
+   left: @h;			
+}
+.abs( @v, @h ) {			
+   .abs;				
+   top: @v; 	
+   left: @h; 	
+}
 
-.abs {						position:absolute; 	top:0; 		left:0 		}
-.abs( @v ) {				.abs; 				top:@v 					}
-.abs( null, @h ) {			.abs; 				left:@h 				}
-.abs( @v, @h ) {			.abs;				top:@v; 	left:@h 	}
+.abs-r {					
+   position:absolute; 	
+   top:0; 		
+   right:0; 	
+}
+.abs-r( @v ) {				
+   .abs-r; 			
+   top: @v; 					
+}
+.abs-r( null, @h ) {
+   .abs-r; 			
+   right: @h;			
+}
+.abs-r( @v, @h ) {		
+   .abs-r;				
+   top: @v; 
+   right: @h; 	
+}
 
-.abs-r {					position:absolute; 	top:0; 		right:0 	}
-.abs-r( @v ) {				.abs-r; 			top:@v 					}
-.abs-r( null, @h ) {		.abs-r; 			right:@h 				}
-.abs-r( @v, @h ) {			.abs-r;				top:@v; 	right:@h 	}
+.abs-b {					
+   position:absolute; 	
+   bottom:0; 	
+   left:0; 		
+}
+.abs-b( @v ) {				
+   .abs-b; 			
+   bottom: @v; 				
+}
+.abs-b( null, @h ) {		
+   .abs-b; 			
+   left: @h;	
+}
+.abs-b( @v, @h ) {			
+   .abs-b;				
+   bottom: @v; 	
+   left: @h;
+}
 
-.abs-b {					position:absolute; 	bottom:0; 	left:0 		}
-.abs-b( @v ) {				.abs-b; 			bottom:@v 				}
-.abs-b( null, @h ) {		.abs-b; 			left:@h 				}
-.abs-b( @v, @h ) {			.abs-b;				bottom:@v; 	left:@h 	}
-
-.abs-br {					position:absolute; 	bottom:0; 	right:0 	}
-.abs-br( @v ) {				.abs-br; 			bottom:@v 				}
-.abs-br( null, @h ) {		.abs-br; 			right:@h 				}
-.abs-br( @v, @h ) {			.abs-br;			bottom:@v; 	right:@h 	}
-
-
-
-
-
-
-
-
-
-
+.abs-br {					
+   position:absolute; 	
+   bottom:0; 	
+   right:0; 	
+}
+.abs-br( @v ) {				
+   .abs-br; 			
+   bottom: @v; 				
+}
+.abs-br( null, @h ) {		
+   .abs-br; 			
+   right: @h; 				
+}
+.abs-br( @v, @h ) {			
+   .abs-br;			
+   bottom: @v; 	
+   right: @h; 	
+}
 
 
 /**
- * CSS3 - Border Radius
+ * Border Radius
+ * 
  */
-
 /* single border radius applied to all corners */
 .border-radius(@r) {
-	-webkit-border-radius:					@r;
-	-moz-border-radius: 					@r;
-	border-radius: 							@r;
+	-webkit-border-radius: @r;
+	-moz-border-radius: @r;
+	border-radius: @r;
 }
 
 /* two values applied tob/bottom then bottom/top */
 .border-radius( @rt, @rb ) {
-	-webkit-border-radius: 					@rt;
-	-webkit-border-bottom-right-radius: 	@rb;
-	-webkit-border-bottom-left-radius: 		@rb;
-	-moz-border-radius: 					@rt;
-	-moz-border-radius-bottomright: 		@rb;
-	-moz-border-radius-bottomleft: 			@rb;
-	border-radius: 							@rt;
-	border-bottom-right-radius: 			@rb;
-	border-bottom-left-radius: 				@rb;
+	-webkit-border-radius: @rt;
+	-webkit-border-bottom-right-radius: @rb;
+	-webkit-border-bottom-left-radius: @rb;
+	-moz-border-radius: @rt;
+	-moz-border-radius-bottomright: @rb;
+	-moz-border-radius-bottomleft: @rb;
+	border-radius: @rt;
+	border-bottom-right-radius: @rb;
+	border-bottom-left-radius: @rb;
 }
-.border-radius( @rt, @rb, tb ) {			.border-radius(@rt,@rb) }
-.border-radius( @rt, @rb, bt ) {			.border-radius(@rb,@rt) }
+.border-radius( @rt, @rb, tb ) {			
+   .border-radius(@rt,@rb);
+}
+.border-radius( @rt, @rb, bt ) {			
+   .border-radius(@rb,@rt);
+}
 
 
 /* two values - left/right right/left */
 .border-radius( @rl, @rr, lr ) {
-	-webkit-border-radius: 					@rl;
-	-webkit-border-top-right-radius: 		@rr;
-	-webkit-border-bottom-right-radius: 	@rr;
-	-moz-border-radius: 					@rl;
-	-moz-border-radius-topright: 			@rr;
-	-moz-border-radius-bottomright: 		@rr;
-	border-radius: 							@rl;
-	border-top-right-radius: 				@rr;
-	border-bottom-right-radius: 			@rr;
+	-webkit-border-radius: @rl;
+	-webkit-border-top-right-radius: @rr;
+	-webkit-border-bottom-right-radius: @rr;
+	-moz-border-radius: @rl;
+	-moz-border-radius-topright: @rr;
+	-moz-border-radius-bottomright: @rr;
+	border-radius: @rl;
+	border-top-right-radius: @rr;
+	border-bottom-right-radius: @rr;
 }
-.border-radius( @rl, @rr, rl ) {			.border-radius(@rr,@rl,lr) }
+.border-radius( @rl, @rr, rl ) {			
+   .border-radius(@rr,@rl,lr);
+}
 
 
 /* two values - topLeft/bottomRight topRight/bottomLeft */
 .border-radius( @r1, @r2, tlbr ) {
-	-webkit-border-radius: 					@r1;
-	-webkit-border-top-right-radius: 		@r2;
-	-webkit-border-bottom-left-radius: 		@r2;
-	-moz-border-radius: 					@r1;
-	-moz-border-radius-topright: 			@r2;
-	-moz-border-radius-bottomleft: 			@r2;
-	border-radius: 							@r1;
-	border-top-right-radius: 				@r2;
-	border-bottom-left-radius: 				@r2;
+	-webkit-border-radius: @r1;
+	-webkit-border-top-right-radius: @r2;
+	-webkit-border-bottom-left-radius: @r2;
+	-moz-border-radius: @r1;
+	-moz-border-radius-topright: @r2;
+	-moz-border-radius-bottomleft: @r2;
+	border-radius: @r1;
+	border-top-right-radius: @r2;
+	border-bottom-left-radius: @r2;
 }
-.border-radius( @r1, @r2, trbl ) {			.border-radius(@r2,@r1,tlbr) }
-.border-radius( @r, tlbr ) {				.border-radius(@r,0,tlbr) }
-.border-radius( @r, trbl ) {				.border-radius(0,@r,tlbr) }
+.border-radius( @r1, @r2, trbl ) {			
+   .border-radius( @r2, @r1, tlbr );
+}
+.border-radius( @r, tlbr ) {				
+   .border-radius( @r, 0, tlbr );
+}
+.border-radius( @r, trbl ) {				
+   .border-radius( 0, @r, tlbr );
+}
 
 
 /* two values - top borders */
-.border-radius( @r, top ) {					.border-radius(@r,0) 				}
-.border-radius( @r, t ) {					.border-radius(@r,top) 				}
-.border-radius( @r, bottom ) {				.border-radius(@r,0,bt) 			}
-.border-radius( @r, b ) {					.border-radius(@r,bottom) 			}
-.border-radius( @r, left ) {				.border-radius(@r,0,lr) 			}
-.border-radius( @r, l ) {					.border-radius(@r,left) 			}
-.border-radius( @r, right ) {				.border-radius(@r,0,rl) 			}
-.border-radius( @r, r ) {					.border-radius(@r,right) 			}
+.border-radius( @r, top ) {					
+   .border-radius( @r, 0 ); 				
+}
+.border-radius( @r, t ) {					
+   .border-radius( @r, top ); 				
+}
+.border-radius( @r, bottom ) {				
+   .border-radius( @r, 0, bt ); 			
+}
+.border-radius( @r, b ) {					
+   .border-radius( @r, bottom ); 			
+}
+.border-radius( @r, left ) {				
+   .border-radius( @r, 0, lr ); 			
+}
+.border-radius( @r, l ) {					
+   .border-radius( @r, left ); 			
+}
+.border-radius( @r, right ) {				
+   .border-radius( @r, 0, rl ); 			
+}
+.border-radius( @r, r ) {					
+   .border-radius( @r, right ); 			
+}
 
 
 /* border-radius different for every corner */
 .border-radius( @r1, @r2, @r3, @r4 ) {
-	-webkit-border-top-left-radius: 		@r1;
-	-webkit-border-top-right-radius: 		@r2;
-	-webkit-border-bottom-right-radius: 	@r3;
-	-webkit-border-bottom-left-radius: 		@r4;
-	-moz-border-radius-topleft: 			@r1;
-	-moz-border-radius-topright: 			@r2;
-	-moz-border-radius-bottomright: 		@r3;
-	-moz-border-radius-bottomleft: 			@r4;
-	border-top-left-radius: 				@r1;
-	border-top-right-radius: 				@r2;
-	border-bottom-right-radius: 			@r3;
-	border-bottom-left-radius: 				@r4;
+	-webkit-border-top-left-radius: @r1;
+	-webkit-border-top-right-radius: @r2;
+	-webkit-border-bottom-right-radius: @r3;
+	-webkit-border-bottom-left-radius: @r4;
+	-moz-border-radius-topleft: @r1;
+	-moz-border-radius-topright: @r2;
+	-moz-border-radius-bottomright: @r3;
+	-moz-border-radius-bottomleft: @r4;
+	border-top-left-radius: @r1;
+	border-top-right-radius: @r2;
+	border-bottom-right-radius: @r3;
+	border-bottom-left-radius: @r4;
 	
 }
-
-
 
 
 /**
@@ -413,19 +551,18 @@
 }
 
 
-
 /**
  * GRADIENT
  * 
  * 
  */
 .gradient (@from: #f7f7f7, @to: #e0e0e0, @fallback: @backgroundFallback) {
-  background-color: @fallback; /* fallback */
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to)); /* Safari 4-5, Chrome 1-9 */
-  background: -webkit-linear-gradient(top, @to, @from); /* Safari 5.1, Chrome 10+ */
-  background: -moz-linear-gradient(top, @to,@from); /* Firefox 3.6+ */
-  background: -ms-linear-gradient(top, @to, @from); /* IE 10 */
-  background: -o-linear-gradient(top, @to, @from); /* Opera 11.10+ */
+   background-color: @fallback; /* fallback */
+   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to)); /* Safari 4-5, Chrome 1-9 */
+   background: -webkit-linear-gradient(top, @to, @from); /* Safari 5.1, Chrome 10+ */
+   background: -moz-linear-gradient(top, @to,@from); /* Firefox 3.6+ */
+   background: -ms-linear-gradient(top, @to, @from); /* IE 10 */
+   background: -o-linear-gradient(top, @to, @from); /* Opera 11.10+ */
 }
 
 
@@ -453,46 +590,37 @@
 }
 
 
-
-
 /**
  * SPRITES
+ * 
  */
-
-.sprite-pos {				background-position: 0 0 			}
-.sprite-pos( @x, @y ) {		background-position: -@x -@y		}
-.sprite-pos( @x ) {			.sprite-pos(@x,0)					}
-.sprite-pos( null, @y ) {	.sprite-pos(@0,y)					}
+.sprite-pos( @x: 0, @y: 0 ) {		
+   background-position: -@x -@y;		
+}
+.sprite-pos( @x ) {			
+   .sprite-pos( @x, 0 );					
+}
+.sprite-pos( null, @y ) {	
+   .sprite-pos( 0, @y );					
+}
 
 
 .sprite( @img, @w, @h, @x, @y ) {
-	
-	.mask(@w,@h);
-	
-	.sprite-pos(@x,@y);
-	
+	.mask( @w, @h );
+	.sprite-pos( @x, @y );
 	.hide-text;
-	
-	background-image: ~"url( @{img}  )"
-	
+	background-image: ~"url( @{img}  )";
 }
 
 .inline-sprite( @img, @w, @h, @x, @y ) {
-	
-	.inline-mask(@w,@h);
-	
-	.sprite-pos(@x,@y);
-	
+	.inline-mask( @w, @h );
+	.sprite-pos( @x, @y );
 	.hide-text;
-	
-	background-image: ~"url( @{img}  )"
-	
+	background-image: ~"url( @{img}  )";
 }
 
 .isprite( @img, @w, @h, @x, @y ) {
-	
-	.inline-sprite(@img,@w,@h,@x,@y)
-	
+	.inline-sprite( @img, @w, @h, @x, @y );
 }
 
 
@@ -503,8 +631,8 @@
  */
 .vsprite( @img, @w, @h, @x, @y, @y1 ) {
 	
-	.sprite(@img,@w,@h,@x,@y);
-	
+	.sprite( @img, @w, @h, @x, @y );
+   
 	&:hover {
 		
 		.sprite-pos( @x, @y1 );
@@ -515,7 +643,7 @@
 
 .vsprite( @img, @w, @h, @x, @y, @y1, @y2 ) {
 	
-	.sprite(@img,@w,@h,@x,@y,@y1);
+	.sprite( @img, @w, @h, @x, @y, @y1 );
 	
 	&:active {
 		
@@ -525,8 +653,12 @@
 	
 }
 
-.sprite( @img, @w, @h, @x, @y, @y1 ) { 			.vsprite(@img,@w,@h,@x,@y,@y1) 		}
-.sprite( @img, @w, @h, @x, @y, @y1, @y2 ) { 	.vsprite(@img,@w,@h,@x,@y,@y1,@y2) 	}
+.sprite( @img, @w, @h, @x, @y, @y1 ) { 			
+   .vsprite( @img, @w, @h, @x, @y, @y1 ) 		
+}
+.sprite( @img, @w, @h, @x, @y, @y1, @y2 ) { 	
+   .vsprite( @img, @w, @h, @x, @y, @y1, @y2 ) 	
+}                               
 
 /**
  * HORIZONTAL STATES SPRITE
@@ -535,7 +667,7 @@
  */
 .hsprite( @img, @w, @h, @x, @y, @x1 ) {
 	
-	.sprite(@img,@w,@h,@x,@y);
+	.sprite( @img, @w, @h, @x, @y );
 	
 	&:hover {
 		
@@ -547,7 +679,7 @@
 
 .hsprite( @img, @w, @h, @x, @y, @x1, @x2 ) {
 	
-	.hsprite(@img,@w,@h,@x,@y,@x1);
+	.hsprite( @img, @w, @h, @x, @y, @x1 );
 	
 	&:active {
 		
@@ -558,24 +690,22 @@
 }
 
 
-
-
-
 /**
  * INLINE LIST
+ * 
  */
-
 .inline-list, .ilist {
 	
-	margin:				0;
-	padding:			0;
-	list-style:			none;
-	list-style-position:inside;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	list-style-position: inside;
 	
-	li { .iblock }
+	li { 
+      .iblock 
+   }
 	
 }
-
 
 /**
  * USER-SELECT
@@ -596,10 +726,6 @@
    -ms-user-select: @val;
    user-select: @val;
 }
-
-
-
-
 
 /**
  * SCALE
@@ -625,7 +751,6 @@
    transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
 }
 
-
 /**
  * SKEW
  * 
@@ -638,7 +763,10 @@
    transform: skewX(@skewX) skewY(@skewY * 1deg);
 }
 
-
+/**
+ * TEXT-COLUMNS
+ * 
+ */
 .text-columns( @columnCount: @baseColumnCount, @columnGap: @baseColumnGap ) {
    -moz-column-count: @columnCount;
    -moz-column-gap: @columnGap * 1px;

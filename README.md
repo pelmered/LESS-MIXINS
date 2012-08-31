@@ -38,7 +38,7 @@ Please fork and/or make a pull request!
 
 
 
-Included features and mixins:
+INCLUDED FEATURES AND MIXINS:
 
  * BASE SETTINGS / DEFAULT VALUES 
  * CLEARFIX
@@ -63,6 +63,10 @@ Included features and mixins:
  * HORIZONTAL STATES SPRITE
  * INLINE LIST
  * USER-SELECT
+ * SCALE
+ * TRANSLATE
+ * SKEW
+ * TEXT-COLUMNS
  
  * A LOT MORE WILL BE ADDED CONTINUOUSLY. So check back regularly.
 
