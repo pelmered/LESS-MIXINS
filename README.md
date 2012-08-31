@@ -18,9 +18,13 @@ This is just a collection of LESS mixins (see http://lesscss.org/#-mixins for mo
 HOW TO USE LESS-MIXINS?
 
 1: Sett up Less. Either client-side or server-side(both works, the demo uses client-side on-the-fly compilation with Javascript. For instructions, see http://lesscss.org/#-client-side-usage
+
 2: Create a less file for your project (file endning should be .less) or use style.less from the demo. The less file should import the less-mixin file (@import "less/mixins.less";)
+
 3: Edit the default values in less/vars.less to fit your project or override them in your less style file.
+
 4: Link the less style in your HTML like this: <link rel="stylesheet/less" type="text/css" href="./style.less">
+
 5: Enjoy a brand new CSS experience!
 
 
