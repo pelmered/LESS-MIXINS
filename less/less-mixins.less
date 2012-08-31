@@ -34,8 +34,15 @@
  * VERTICAL STATES SPRITE
  * HORIZONTAL STATES SPRITE
  * INLINE LIST
- * UNSELECTABLE
  * USER-SELECT
+ * SCALE
+ * TRANSLATE
+ * SKEW
+ * TEXT-COLUMNS
+ * 
+ * 
+ * 
+ * 
  * 
  */
  
@@ -589,3 +596,55 @@
    -ms-user-select: @val;
    user-select: @val;
 }
+
+
+
+
+
+/**
+ * SCALE
+ * 
+ */
+.scale ( @scale: @baseScale ) {
+   -moz-transform: scale(@scale)
+   -webkit-transform: scale(@scale)
+   -o-transform: scale(@scale) 
+   -ms-transform: scale(@scale)
+   transform: scale(@scale)
+}
+
+/**
+ * TRANSLATE
+ * 
+ */
+.translate( @translateX: @baseTranslateX @translateY: @baseTranslateY ) {
+   -moz-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
+   -webkit-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
+   -o-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
+   -ms-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
+   transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
+}
+
+
+/**
+ * SKEW
+ * 
+ */
+.skew( @skewX: @baseSkewX @skewY: @baseSkewY ) {
+   -moz-transform: skewX(@skewX) skewY(@skewY * 1deg);
+   -webkit-transform: skewX(@skewX) skewY(@skewY * 1deg);
+   -o-transform: skewX(@skewX) skewY(@skewY * 1deg);
+   -ms-transform: skewX(@skewX) skewY(@skewY * 1deg);
+   transform: skewX(@skewX) skewY(@skewY * 1deg);
+}
+
+
+.text-columns( @columnCount: @baseColumnCount, @columnGap: @baseColumnGap ) {
+   -moz-column-count: @columnCount;
+   -moz-column-gap: @columnGap * 1px;
+   -webkit-column-count: @columnCount;
+   -webkit-column-gap: @columnGap * 1px;
+   column-count: @columnCount;
+   column-gap: @columnGap * 1px;
+}
+
