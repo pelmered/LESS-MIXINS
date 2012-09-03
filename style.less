@@ -12,23 +12,29 @@
 /* IMPORT LESS-MIXINS */
 @import "less/less-mixins.less";
 
+/* Override default values in this file */
+@baseBorderRadius: 20px;
 
 .code-box {
 
 	.size(400px, 400px);
 
-   .gradient (#F6F6F6, #E4E4E4, #EEEEEE);
+   .gradient (#EDEDED, #CCCCCC, #DDDDDD);
 
    .pre;
+   
+   .transition(color);
 }
-
+.code-box:hover {
+   color: #F00;
+}
 .box {
 	
 	.size(200px, 200px);
    
-   .border-radius(5px);
+   .border-radius();
 	
-   .gradient (#CCCCCC, #EDEDED, #DDDDDD);
+   background: #DDD;
 
    .transition(all, 500);
    
