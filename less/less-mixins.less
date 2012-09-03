@@ -39,6 +39,7 @@
  * TRANSLATE
  * SKEW
  * TEXT-COLUMNS
+ * TRANSITIONS
  * 
  * 
  * 
@@ -62,7 +63,7 @@
 
 
 
-@import "less/vars.less"; /* Default values - Change them to fit your project */
+@import "vars.less"; /* Default values - Change them to fit your project */
 
  
 .font-size(@fontSize: @baseFontSize) {
@@ -217,6 +218,7 @@
    height: @h * 1px 
 }
 .size( null, @w ) {
+   height: auto;
    width: @w * 1px 
 }
 .size( @h, @w ) {
@@ -731,31 +733,38 @@
  * SCALE
  * 
  */
-.scale ( @scale: @baseScale ) {
-   -moz-transform: scale(@scale)
-   -webkit-transform: scale(@scale)
-   -o-transform: scale(@scale) 
-   -ms-transform: scale(@scale)
-   transform: scale(@scale)
+ 
+.font-size(@fontSize: @baseFontSize) {
+   font-size: ~"@{fontSize}px";
+   font-size: @fontSize/10rem;
+}
+
+ 
+ .scale( @scale: @baseScale ) {
+   -webkit-transform:scale(@scale);
+   -moz-transform:scale(@scale);
+   -o-transform:scale(@scale);
+   -ms-transform:scale(@scale);
+   transform:scale(@scale);
 }
 
 /**
  * TRANSLATE
  * 
  */
-.translate( @translateX: @baseTranslateX @translateY: @baseTranslateY ) {
-   -moz-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
-   -webkit-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
-   -o-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
-   -ms-transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
-   transform: translateX(@baseTranslateX) translateY(@baseTranslateY) 
+.translate( @translateX: @baseTranslateX, @translateY: @baseTranslateY ) {
+   -moz-transform: translateX(@baseTranslateX) translateY(@baseTranslateY);
+   -webkit-transform: translateX(@baseTranslateX) translateY(@baseTranslateY); 
+   -o-transform: translateX(@baseTranslateX) translateY(@baseTranslateY);
+   -ms-transform: translateX(@baseTranslateX) translateY(@baseTranslateY); 
+   transform: translateX(@baseTranslateX) translateY(@baseTranslateY);
 }
 
 /**
  * SKEW
  * 
  */
-.skew( @skewX: @baseSkewX @skewY: @baseSkewY ) {
+.skew( @skewX: @baseSkewX, @skewY: @baseSkewY ) {
    -moz-transform: skewX(@skewX) skewY(@skewY * 1deg);
    -webkit-transform: skewX(@skewX) skewY(@skewY * 1deg);
    -o-transform: skewX(@skewX) skewY(@skewY * 1deg);
@@ -775,4 +784,19 @@
    column-count: @columnCount;
    column-gap: @columnGap * 1px;
 }
+
+/**
+ * TRANSITIONS
+ * 
+ */
+.transition( @property: background, @duration: 300, @function: ease-in-out) {
+   
+   -webkit-transition: @property (@duration * 1ms) @function;
+   -moz-transition: @property (@duration * 1ms) @function;
+   -ms-transition: @property (@duration * 1ms) @function;
+   -o-transition: @property (@duration * 1ms) @function;
+   transition: @property (@duration * 1ms) @function;
+}
+
+
 
