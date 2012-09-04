@@ -21,7 +21,7 @@ HOW TO USE LESS-MIXINS?
 
 2: Create a less file for your project (file endning should be .less) or use style.less from the demo. The less file should import the less-mixin file (@import "less/mixins.less";)
 
-3: Edit the default values in less/vars.less to fit your project or override them in your less style file.
+3: Edit the default values in less/config.less to fit your project or override them in your less style file.
 
 4: Link the less style in your HTML like this: <link rel="stylesheet/less" type="text/css" href="./style.less">
 
