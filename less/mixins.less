@@ -5,8 +5,6 @@
  * Copyright 2012, Peter Elmered
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- *
- * TouchWipe gesture credits: http://www.netcu.de/jquery-touchwipe-iphone-ipad-library
  */
 
 
@@ -40,7 +38,7 @@
  * SKEW
  * TEXT-COLUMNS
  * TRANSITIONS
- * 
+ * ARROWS (Using borders)
  * 
  * 
  * 
@@ -63,7 +61,7 @@
 
 
 
-@import "config.less"; /* Default values - Change them to fit your project */
+//@import "config.less"; /* Default values - Change them to fit your project */
 
  
 .font-size(@fontSize: @baseFontSize) {
@@ -528,7 +526,7 @@
 /**
  * BOX-SHADOW
  * 
- * USAGE: .box-shadow(0px 6px 15px 4px rgba(0, 0, 0, 0.15));
+ * Example usage: .box-shadow(0px 6px 15px 4px rgba(0, 0, 0, 0.15));
  */
 .box-shadow ( @arg )
 {
@@ -737,7 +735,7 @@
 .font-size(@fontSize: @baseFontSize) {
    font-size: ~"@{fontSize}px";
    font-size: @fontSize/10rem;
-}
+} 
 
  
  .scale( @scale: @baseScale ) {
@@ -789,7 +787,7 @@
  * TRANSITIONS
  * 
  */
-.transition( @property: background, @duration: 300, @function: ease-in-out) {
+.transition( @property: all, @duration: 300, @function: ease-in-out) {
    
    -webkit-transition: @property (@duration * 1ms) @function;
    -moz-transition: @property (@duration * 1ms) @function;
@@ -798,5 +796,31 @@
    transition: @property (@duration * 1ms) @function;
 }
 
-
-
+/**
+ * ARROWS
+ * Using only borders(no images)
+ */
+.arrow-right (@arrowSize, @arrowColor) {
+   border-left: @arrowSize solid @arrowColor; 
+   border-bottom: @arrowSize solid transparent; 
+   border-top: @arrowSize solid transparent; 
+   border-right: @arrowSize solid transparent; 
+}
+.arrow-left (@arrowSize, @arrowColor) {
+   border-right: @arrowSize solid @buttonArrowColor; 
+   border-bottom: @arrowSize solid transparent; 
+   border-top: @arrowSize solid transparent; 
+   border-left: @arrowSize solid transparent; 
+}
+.arrow-top (@arrowSize, @arrowColor) {
+   border-bottom: @arrowSize solid @arrowColor; 
+   border-right: @arrowSize solid transparent; 
+   border-left: @arrowSize solid transparent; 
+   border-top: @arrowSize solid transparent; 
+}
+.arrow-bottom (@arrowSize, @arrowColor) {
+   border-top: @arrowSize solid @buttonArrowColor; 
+   border-right: @arrowSize solid transparent; 
+   border-left: @arrowSize solid transparent; 
+   border-bottom: @arrowSize solid transparent; 
+}

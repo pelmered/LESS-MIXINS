@@ -68,6 +68,7 @@ INCLUDED FEATURES AND MIXINS:
  * SKEW
  * TEXT-COLUMNS
  * TRANSITIONS
+ * ARROWS (i.e. triangles. Using borders)
  
  * A LOT MORE WILL BE ADDED CONTINUOUSLY. So check back regularly.
 
