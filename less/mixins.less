@@ -11,6 +11,20 @@
 /**
  * INDEX
  * 
+ * UTILITY-MIXINS
+ * 
+ * CSS3
+ *  - 
+ * 
+ * FORMS
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * CLEARFIX
  * WRAP
  * PRE
@@ -39,6 +53,10 @@
  * TEXT-COLUMNS
  * TRANSITIONS
  * ARROWS (Using borders)
+ * ICONS
+ * PLACEHOLDER
+ * FORMS
+ * 
  * 
  * 
  * 
@@ -64,11 +82,10 @@
 //@import "config.less"; /* Default values - Change them to fit your project */
 
  
-.font-size(@fontSize: @baseFontSize) {
+.font-size(@fontSize: @defaultFontSize) {
    font-size: ~"@{fontSize}px";
    font-size: @fontSize/10rem;
 }
-
 
 /**
  * CLEARFIX
@@ -412,7 +429,7 @@
  * 
  */
 /* single border radius applied to all corners */
-.border-radius(@r: @baseBorderRadius) {
+.border-radius(@r: @defaultBorderRadius) {
 	-webkit-border-radius: @r;
 	-moz-border-radius: @r;
 	border-radius: @r;
@@ -571,7 +588,7 @@
  * 
  * 
  */
-.rotate(@rotation: @baseRotation) {
+.rotate(@rotation: @defaultRotation) {
    /* Webkit - Chrome, Safari... */
    -webkit-transform: rotate(@rotation);
    /* Firefox */
@@ -626,8 +643,7 @@
 
 /**
  * VERTICAL STATES SPRITE
- * usefull for 2 or 3 states buttons when state-related images
- * are disposed vertically 
+ * usefull for 2 or 3 states buttons when state-related images are disposed vertically 
  */
 .vsprite( @img, @w, @h, @x, @y, @y1 ) {
 	
@@ -662,8 +678,7 @@
 
 /**
  * HORIZONTAL STATES SPRITE
- * usefull for 2 or 3 states buttons when state-related images
- * are disposed horizontally 
+ * usefull for 2 or 3 states buttons when state-related images are disposed horizontally 
  */
 .hsprite( @img, @w, @h, @x, @y, @x1 ) {
 	
@@ -732,13 +747,13 @@
  * 
  */
  
-.font-size(@fontSize: @baseFontSize) {
+.font-size(@fontSize: @defaultFontSize) {
    font-size: ~"@{fontSize}px";
    font-size: @fontSize/10rem;
 } 
 
  
- .scale( @scale: @baseScale ) {
+ .scale( @scale: @defaultScale ) {
    -webkit-transform:scale(@scale);
    -moz-transform:scale(@scale);
    -o-transform:scale(@scale);
@@ -750,19 +765,19 @@
  * TRANSLATE
  * 
  */
-.translate( @translateX: @baseTranslateX, @translateY: @baseTranslateY ) {
-   -moz-transform: translateX(@baseTranslateX) translateY(@baseTranslateY);
-   -webkit-transform: translateX(@baseTranslateX) translateY(@baseTranslateY); 
-   -o-transform: translateX(@baseTranslateX) translateY(@baseTranslateY);
-   -ms-transform: translateX(@baseTranslateX) translateY(@baseTranslateY); 
-   transform: translateX(@baseTranslateX) translateY(@baseTranslateY);
+.translate( @translateX: @defaultTranslateX, @translateY: @defaultTranslateY ) {
+   -moz-transform: translateX(@defaultTranslateX) translateY(@defaultTranslateY);
+   -webkit-transform: translateX(@defaultTranslateX) translateY(@defaultTranslateY); 
+   -o-transform: translateX(@defaultTranslateX) translateY(@defaultTranslateY);
+   -ms-transform: translateX(@defaultTranslateX) translateY(@defaultTranslateY); 
+   transform: translateX(@defaultTranslateX) translateY(@defaultTranslateY);
 }
 
 /**
  * SKEW
  * 
  */
-.skew( @skewX: @baseSkewX, @skewY: @baseSkewY ) {
+.skew( @skewX: @defaultSkewX, @skewY: @defaultSkewY ) {
    -moz-transform: skewX(@skewX) skewY(@skewY * 1deg);
    -webkit-transform: skewX(@skewX) skewY(@skewY * 1deg);
    -o-transform: skewX(@skewX) skewY(@skewY * 1deg);
@@ -774,7 +789,7 @@
  * TEXT-COLUMNS
  * 
  */
-.text-columns( @columnCount: @baseColumnCount, @columnGap: @baseColumnGap ) {
+.text-columns( @columnCount: @defaultColumnCount, @columnGap: @defaultColumnGap ) {
    -moz-column-count: @columnCount;
    -moz-column-gap: @columnGap * 1px;
    -webkit-column-count: @columnCount;
@@ -787,6 +802,15 @@
  * TRANSITIONS
  * 
  */
+ .transition(@transition){
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	-khtml-transition: @transition;
+	-o-transition: @transition;
+	transition: @transition;
+}
+
 .transition( @property: all, @duration: 300, @function: ease-in-out) {
    
    -webkit-transition: @property (@duration * 1ms) @function;
@@ -795,6 +819,98 @@
    -o-transition: @property (@duration * 1ms) @function;
    transition: @property (@duration * 1ms) @function;
 }
+
+.translate3d(@x, @y, @z){
+	-webkit-transform: translate(@x, @y, @z);
+	-moz-transform: translate(@x, @y, @z);
+	-ms-transform: translate(@x, @y, @z);
+	-o-transform: translate(@x, @y, @z);
+	transform: translate(@x, @y, @z);
+}
+
+/*
+Backface visibility
+Prevent browsers from flickering when using CSS 3D transforms.
+Default value is `visible`, but can be changed to `hidden
+See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+*/
+.backface-visibility(@visibility){
+	-webkit-backface-visibility: @visibility;
+	-moz-backface-visibility: @visibility;
+	-ms-backface-visibility: @visibility;
+	backface-visibility: @visibility;
+}
+
+/*
+Background clipping
+Heads up: FF 3.6 and under need "padding" instead of "padding-box"
+*/
+.background-clip(@clip){
+	-webkit-background-clip: @clip;
+	-moz-background-clip: @clip;
+	background-clip: @clip;
+}
+
+// Background sizing
+.background-size(@size){
+	-webkit-background-size: @size;
+	-moz-background-size: @size;
+	-o-background-size: @size;
+	background-size: @size;
+}
+
+// Box sizing
+.box-sizing(@boxmodel){
+	-webkit-box-sizing: @boxmodel;
+	-moz-box-sizing: @boxmodel;
+	-ms-box-sizing: @boxmodel;
+	box-sizing: @boxmodel;
+}
+
+// User select
+// For selecting text on the page
+.user-select(@select){
+	-webkit-user-select: @select;
+	-moz-user-select: @select;
+	-ms-user-select: @select;
+	-o-user-select: @select;
+	user-select: @select;
+}
+
+// Resize anything
+.resizable(@direction){
+	resize: @direction; // Options: horizontal, vertical, both
+	overflow: auto; // Safari fix
+}
+
+// CSS3 Content Columns
+.content-columns(@columnCount, @columnGap: @gridGutterWidth){
+	-webkit-column-count: @columnCount;
+	-moz-column-count: @columnCount;
+	column-count: @columnCount;
+	-webkit-column-gap: @columnGap;
+	-moz-column-gap: @columnGap;
+	column-gap: @columnGap;
+}
+
+/* Opacity  
+ * Value 0 - 1
+ */
+.opacity(@opacity){
+      opacity: @opacity;
+      @ieop: @opacity * 100;
+
+      .lt-ie8 & {
+            filter: ~"alpha(opacity=@{ieop})"; /* All IE */
+      }
+      .lt-ie9 & {
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ieop})"; /* IE8+ */
+      }
+}
+
+
+
+
 
 /**
  * ARROWS
@@ -823,4 +939,45 @@
    border-right: @arrowSize solid transparent; 
    border-left: @arrowSize solid transparent; 
    border-bottom: @arrowSize solid transparent; 
+}
+
+/* ICONS */
+
+.icon(@char, @fontSize: @defaultIconFontSize, @fontFamily: @defaultIconFont){
+	content: @char;
+   .font-size(@fontSize);
+	font-family: @fontFamily;
+}
+.right-icon(@char){
+	content: @char;
+   .font-size(@fontSize);
+	font-family: @fontFamily;
+	float: right;
+}
+.left-icon(@char){
+	content: @char;
+   .font-size(@fontSize);
+	font-family: @fontFamily;
+	float: left;
+}
+
+
+/* PLACEHOLDER */
+.placeholder(@color: @defaultPlaceholderTextColor){
+	:-moz-placeholder {
+		color: @color;
+	}
+	::-webkit-input-placeholder {
+		color: @color;
+	}
+}
+
+/* FORMS */
+
+// Block level inputs
+.input-block-level {
+	display: block;
+	width: 100%;
+	min-height: 28px; // Make inputs at least the height of their button counterpart
+	.box-sizing(border-box); // Makes inputs behave like true block-level elements
 }

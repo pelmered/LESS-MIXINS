@@ -27,6 +27,15 @@ HOW TO USE LESS-MIXINS?
 
 5: Enjoy a brand new CSS experience!
 
+RECOMENDATION
+
+Use this where you open your HTML-tag:
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+The "no-js" class can be omitted if you do not use Modernizr.
 
 TODO
  * More default values(and use them more)

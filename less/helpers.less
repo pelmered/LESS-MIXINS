@@ -73,11 +73,58 @@ hr.full-width {
    padding: 0 20px;
    display: block;
 }
+a.arrow, a.arrow-right, a.arrow-left, a.arrow-down, a.arrow-up {
+   position: relative;
+   line-height: 1;
+}
+a.arrow:after, a.arrow-right:after, a.arrow-left:after, a.arrow-down:after, a.arrow-up:after { 
+   content: ""; 
+   width: 0px; 
+   height: 0px; 
+   display: block; 
+   position: absolute; 
+   //top: 13px; 
+   //Vertically center
+   top: 50%;
+   //margin-top: -~"@{buttonArrowSize}px";
+   margin-top: -@buttonArrowSize + 1px;
+   //margin-top: -@buttonArrowSize;
+}
+a.arrow, a.arrow-right, a.arrow-down, a.arrow-up {
+   padding: 11px 44px 10px 24px; 
+}
+ a.arrow-left {
+   padding: 11px 24px 10px 44px; 
+}
+a.arrow:after, a.arrow-right:after, a.arrow-down:after, a.arrow-up:after {
+   right: 18px; 
+}
+a.arrow:after, a.arrow-right:after { 
+   right: 18px; 
+   .arrow-right(@buttonArrowSize, @buttonArrowColor);
+}
+a.arrow-left:after {
+   left: 18px; 
+   .arrow-left(@buttonArrowSize, @buttonArrowColor);
+}
+a.arrow-up:after {
+   right: 18px; 
+   .arrow-up(@buttonArrowSize, @buttonArrowColor);
+}
+a.arrow-down:after {
+   right: 18px; 
+   .arrow-down(@buttonArrowSize, @buttonArrowColor);
+}
 
-
-
-
-
+input.arrow {
+   position: relative;
+   padding: 11px 44px 10px 24px; 
+   line-height: 1;
+   background: #BF2128 url("../images/button-arrow-right.png") no-repeat right center;
+}
+input.arrow:hover {
+   background: #DA262E url("../images/button-arrow-right.png") no-repeat right center;
+}
 
 
 .read-more {
@@ -127,14 +174,14 @@ hr.full-width {
    width: 50px;
 
    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
-   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+   //background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
    background: -moz-linear-gradient(left, rgba(251,251,251,0) 0%, rgba(251,251,251,1) 100%); /* FF3.6+ */
    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(251,251,251,0)), color-stop(100%,rgba(251,251,251,1))); /* Chrome,Safari4+ */
    background: -webkit-linear-gradient(left, rgba(251,251,251,0) 0%,rgba(251,251,251,1) 100%); /* Chrome10+,Safari5.1+ */
    background: -o-linear-gradient(left, rgba(251,251,251,0) 0%,rgba(251,251,251,1) 100%); /* Opera 11.10+ */
-   background: -ms-linear-gradient(left, rgba(251,251,251,0) 0%,rgba(255,255,251,1) 100%); /* IE10+ */
+   background: -ms-linear-gradient(left, rgba(237,237,237,0) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
    background: linear-gradient(to right, rgba(251,251,251,0) 0%,rgba(251,251,251,1) 100%); /* W3C */
-   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-8 */
+   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00EDEDED', endColorstr='#EDEDED',GradientType=1 ); /* IE6-8 */
    
    z-index: 100;
 }
