@@ -1,5 +1,6 @@
 /* HELPERS */
 
+@import "lib.less";
 
 .float-left,
 .left { float: left !important; }
@@ -22,21 +23,27 @@
 .text-left { text-align: left; }
 .text-right { text-align: right; }
 
-.clearfix:after {
-    clear: both;
-    content: ".";
-    display: block;
-    height: 0;
-    visibility: hidden;
-}
-.clearfix {
-    display: inline-block;
+
+/**
+ * CLEARFIX
+ * (from TwitterBootstrap)
+ */
+.clearfix, .clr {
+	
+	*zoom: 1;
+	
+	&:before, &:after {
+		display: table;
+		content: "";
+	}
+	
+	&:after {
+		clear: both;
+	}
+	
 }
 * html .clearfix {
     height: 1px;
-}
-.clearfix {
-    display: block;
 }
 
 
@@ -87,7 +94,7 @@ a.arrow:after, a.arrow-right:after, a.arrow-left:after, a.arrow-down:after, a.ar
    //Vertically center
    top: 50%;
    //margin-top: -~"@{buttonArrowSize}px";
-   margin-top: -@buttonArrowSize + 1px;
+   margin-top: -@buttonArrowSize - 0.5px; //Looks better 0.5px pushed up (Feel free to remove or edit "- 0.5px");
    //margin-top: -@buttonArrowSize;
 }
 a.arrow, a.arrow-right, a.arrow-down, a.arrow-up {

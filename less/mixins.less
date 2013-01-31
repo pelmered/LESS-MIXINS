@@ -87,32 +87,15 @@
    font-size: @fontSize/10rem;
 }
 
-/**
- * CLEARFIX
- * (from TwitterBootstrap)
- */
-.clearfix, .clr {
-	
-	*zoom: 1;
-	
-	&:before, &:after {
-		display: table;
-		content: "";
-	}
-	
-	&:after {
-		clear: both;
-	}
-	
-}
 
-.wrap {
+
+.wrap() {
   text-wrap: wrap;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   word-wrap: break-word;
 }
-.pre {
+.pre() {
   text-wrap: wrap;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
@@ -126,7 +109,7 @@
  *
  * I removed the border and background rule to allow element define it's own rules!
  */
-.hide-text {
+.hide-text() {
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
@@ -140,15 +123,15 @@
 .ta( @align:left ) { 
    text-align: @align;
 }
-.tl { 
+.tl() { 
    .ta( left ) }
-.tr { 
+.tr() { 
    .ta( right ) 
 }
-.tc { 
+.tc() { 
    .ta( center ) 
 }
-.tj { 
+.tj() { 
    .ta( justify ) 
 }
 
@@ -240,7 +223,7 @@
    width: @w * 1px; height: @h * 1px 
 }
 
-.block {					
+.block() {					
    display:block 
 }
 .block( @w ) {				
@@ -254,7 +237,7 @@
 }
 
 /* inline-block backwards compatibilty hack */
-.inline-block {
+.inline-block() {
 	display: -moz-inline-stack;
 	display: inline-block;
 	zoom: 1;
@@ -275,7 +258,7 @@
 }
 
 /* inline-block shortcuts */
-.iblock {					
+.iblock() {					
    .inline-block;
 }
 .iblock( @w ) {				
@@ -292,7 +275,7 @@
 /**
  * MASKING
  */
-.mask {						
+.mask() {						
    .block;					
    overflow: hidden;
 }
@@ -309,7 +292,7 @@
    .mask;
 }
 
-.inline-mask {				
+.inline-mask() {				
    .inline-block;			
    overflow: hidden;
 }
@@ -326,7 +309,7 @@
    .inline-mask;
 }
 
-.imask {					
+.imask() {					
    .inline-mask;
 }
 .imask( @w ) {				
@@ -343,11 +326,11 @@
 /**
  * POSITIONING
  */
-.rel {						
+.rel() {						
    position: relative;
 }
 
-.abs {						
+.abs() {						
    position:absolute; 	
    top:0; 		
    left:0; 		
@@ -366,7 +349,7 @@
    left: @h; 	
 }
 
-.abs-r {					
+.abs-r() {					
    position:absolute; 	
    top:0; 		
    right:0; 	
@@ -385,7 +368,7 @@
    right: @h; 	
 }
 
-.abs-b {					
+.abs-b() {					
    position:absolute; 	
    bottom:0; 	
    left:0; 		
@@ -404,7 +387,7 @@
    left: @h;
 }
 
-.abs-br {					
+.abs-br() {					
    position:absolute; 	
    bottom:0; 	
    right:0; 	
@@ -567,20 +550,39 @@
    filter: dropshadow(color=@color, offx=@x, offy=@y);
 }
 
-
 /**
  * GRADIENT
  * 
  * 
  */
-.gradient (@from: #f7f7f7, @to: #e0e0e0, @fallback: @backgroundFallback) {
-   background-color: @fallback; /* fallback */
-   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to)); /* Safari 4-5, Chrome 1-9 */
-   background: -webkit-linear-gradient(top, @to, @from); /* Safari 5.1, Chrome 10+ */
-   background: -moz-linear-gradient(top, @to,@from); /* Firefox 3.6+ */
-   background: -ms-linear-gradient(top, @to, @from); /* IE 10 */
-   background: -o-linear-gradient(top, @to, @from); /* Opera 11.10+ */
+.gradient(@from: #dddddd, @to: #ffffff, @fallback: @defaultBackgroundFallback, @direction: top ) { // 'set to start') {
+   //awful code - less can't access outer scope
+   @s: @from;
+   @b: @fallback;
+
+   background-color: @fallback;
+
+   background-image: -moz-linear-gradient(top, @from, @to); /* Firefox 3.6+ */
+   background: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0, @from),color-stop(1, @to)); /* Safari 4-5, Chrome 1-9 */
+   background: -webkit-linear-gradient(top, @from, @to); /* Safari 5.1, Chrome 10+ */
+   //background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, @from),color-stop(1, @to));
+
+   background: -ms-linear-gradient(top, @from, @to); /* IE 10+ */
+   background: -o-linear-gradient(top, @from, @to); /* Opera 11.10+ */
+   background-image: linear-gradient(top, @from, @to); /* Standard CSS3 */
+   filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d')", @to, @from));
 }
+/*
+OLD
+.gradient (@from: #f7f7f7, @to: #e0e0e0, @fallback: @backgroundFallback) {
+   background-color: @fallback; /* fallback * /
+   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to)); /* Safari 4-5, Chrome 1-9 * /
+   background: -webkit-linear-gradient(top, @to, @from); /* Safari 5.1, Chrome 10+ * /
+   background: -moz-linear-gradient(top, @to,@from); /* Firefox 3.6+ * /
+   background: -ms-linear-gradient(top, @to, @from); /* IE 10 * /
+   background: -o-linear-gradient(top, @to, @from); /* Opera 11.10+ * /
+}
+*/
 
 
 /**
@@ -709,7 +711,7 @@
  * INLINE LIST
  * 
  */
-.inline-list, .ilist {
+.inline-list() {
 	
 	margin: 0;
 	padding: 0;
@@ -975,7 +977,7 @@ Heads up: FF 3.6 and under need "padding" instead of "padding-box"
 /* FORMS */
 
 // Block level inputs
-.input-block-level {
+.input-block-level() {
 	display: block;
 	width: 100%;
 	min-height: 28px; // Make inputs at least the height of their button counterpart
